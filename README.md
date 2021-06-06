@@ -1,5 +1,12 @@
 # BankAPI
 
+## Related article
+
+https://blog.nootch.net/post/event-sourcing-with-elixir-part-1/
+
+
+## Setup
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
