@@ -7,13 +7,9 @@ defmodule BankAPI.Application do
     import Supervisor.Spec
 
     children = [
-      # Start the Ecto repository
       supervisor(BankAPI.Repo, []),
-      # Start the endpoint when the application starts
       supervisor(BankAPIWeb.Endpoint, []),
       supervisor(BankAPI.Accounts.Supervisor, [])
-      # Starts a worker by calling: BankAPI.Worker.start_link(arg)
-      # {BankAPI.Worker, arg},
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

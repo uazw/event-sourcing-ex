@@ -14,9 +14,7 @@ config :bank_api, BankAPI.Repo,
   username: "postgres",
   password: "postgres",
   database: "bank_api_test",
-  hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
-
+  hostname: "localhost"
 
 config :commanded,
   event_store_adapter: Commanded.EventStore.Adapters.InMemory

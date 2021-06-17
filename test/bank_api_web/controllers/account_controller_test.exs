@@ -1,6 +1,9 @@
 defmodule BankAPIWeb.AccountControllerTest do
   use BankAPIWeb.ConnCase
 
+  alias BankAPI.Repo
+  alias BankAPI.Accounts.Projections.Account
+
   @create_attrs %{
     initial_balance: 42_00
   }
@@ -13,7 +16,7 @@ defmodule BankAPIWeb.AccountControllerTest do
   end
 
   describe "create account" do
-    test "render account when data is valid", %{conn: conn} do
+    test "renders account when data is valid", %{conn: conn} do
       conn =
         post(
           conn,
@@ -35,7 +38,7 @@ defmodule BankAPIWeb.AccountControllerTest do
           account: @invalid_attrs
         )
 
-      assert json_response(conn, 422)["error"] != %{}
+      assert json_response(conn, 422)["errors"] != %{}
     end
   end
 end

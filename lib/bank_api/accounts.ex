@@ -1,6 +1,6 @@
 defmodule BankAPI.Accounts do
   @moduledoc """
-  the Account context
+  The Accounts context.
   """
 
   import Ecto.Query, warn: false
@@ -21,8 +21,8 @@ defmodule BankAPI.Accounts do
 
       dispatch_result =
         %OpenAccount{
-          account_uuid: account_uuid,
-          initial_balance: changeset.changes.initial_balance
+          initial_balance: changeset.changes.initial_balance,
+          account_uuid: account_uuid
         }
         |> Router.dispatch()
 
@@ -36,7 +36,7 @@ defmodule BankAPI.Accounts do
             }
           }
 
-        reply ->BankAPI.Accounts.Projectors.AccountOpened
+        reply ->
           reply
       end
     else
