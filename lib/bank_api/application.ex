@@ -1,17 +1,17 @@
 defmodule BankAPI.Application do
-  # See https://hexdocs.pm/elixir/Application.html
-  # for more information on OTP Applications
   @moduledoc false
 
   use Application
 
   def start(_type, _args) do
-    # List all child processes to be supervised
+    import Supervisor.Spec
+
     children = [
       # Start the Ecto repository
-      BankAPI.Repo,
+      supervisor(BankAPI.Repo, []),
       # Start the endpoint when the application starts
-      BankAPIWeb.Endpoint
+      supervisor(BankAPIWeb.Endpoint, []),
+      supervisor(BankAPI.Accounts.Supervisor, [])
       # Starts a worker by calling: BankAPI.Worker.start_link(arg)
       # {BankAPI.Worker, arg},
     ]
